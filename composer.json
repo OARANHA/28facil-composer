@@ -1,0 +1,72 @@
+{
+  "name": "28facil/composer",
+  "description": "Plugin Composer para instalador customizado de pacotes 28Fácil (plugins/themes). Gerenciamento avançado de assets públicos com suporte a glob patterns.",
+  "keywords": [
+    "composer",
+    "plugin",
+    "installer",
+    "28facil",
+    "aivopro",
+    "assets",
+    "public-files"
+  ],
+  "type": "composer-plugin",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "28Fácil Team",
+      "email": "dev@28facil.com.br"
+    }
+  ],
+  "extra": {
+    "class": "AiVoPro\\Composer\\Plugin"
+  },
+  "require": {
+    "php": "^8.1|^8.2|^8.3",
+    "composer-plugin-api": "^2.0"
+  },
+  "require-dev": {
+    "composer/composer": "^2.3",
+    "phpunit/phpunit": "^10.0|^11.0",
+    "phpstan/phpstan": "^1.10",
+    "squizlabs/php_codesniffer": "^3.7",
+    "phpmd/phpmd": "^2.13"
+  },
+  "autoload": {
+    "psr-4": {
+      "AiVoPro\\Composer\\": "src/"
+    },
+    "exclude-from-classmap": [
+      "/tests/"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "AiVoPro\\Composer\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "phpstan": "phpstan analyse",
+    "phpcs": "phpcs",
+    "phpcbf": "phpcbf -v",
+    "phpmd": "phpmd src ansi phpmd.xml --suffixes=php",
+    "unit-test": "phpunit",
+    "code-coverage": "phpunit --coverage-html coverage",
+    "analyse": [
+      "@phpstan",
+      "@phpcs",
+      "@phpmd",
+      "@unit-test"
+    ],
+    "fix": [
+      "@phpcbf"
+    ]
+  },
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true,
+    "preferred-install": "dist"
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}
